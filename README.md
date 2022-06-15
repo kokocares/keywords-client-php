@@ -61,7 +61,6 @@ export KOKO_KEYWORDS_AUTH=username:password
 
 Import the module
 
-```
 ```php
 include 'vendor/autoload.php';
 
