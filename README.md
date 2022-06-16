@@ -6,42 +6,6 @@ A php client  for the [Koko Keywords API](https://developers.kokocares.org). The
 
 ## Install
 
-### Install dynamic library
-
-First identify which platform you need to install. Our client currently supports
-OSX and Linux across x86_64 and Arm64 architectures. An easy way to do this is
-using `uname`:
-
-```
-uname -a
-```
-
-Download the correct library for your platform:
-- [OSX,
-  x86_64](https://github.com/kokocares/keywords-client/releases/download/v0.2.0/libkoko_keywords_x86_64.dylib)
-- [OSX,
-  ARM64](https://github.com/kokocares/keywords-client/releases/download/v0.2.0/libkoko_keywords_arm64.dylib)
-- [Linux,
-  x86_64](https://github.com/kokocares/keywords-client/releases/download/v0.2.0/libkoko_keywords_x86_64.dylib)
-- [Linux,
-  ARM64](https://github.com/kokocares/keywords-client/releases/download/v0.2.0/libkoko_keywords_arm64.dylib)
-
-Move the file to your shared library directory and rename the library removing
-the os/architecture label and make sure the file has execution prviledges:
-
-On OSX
-```
-mv libkoko_keywords_x86_64.dylib /usr/local/lib/libkoko_keywords.dylib
-chmod 755 /usr/local/lib/libkoko_keywords.dylib
-```
-
-On Linux you can put the file anywhere as you also need to set the LD_LIBRARY_PATH
-```
-mv libkoko_keywords_x86_64.so /usr/local/lib/libkoko_keywords.so
-chmod 755 /usr/local/lib/libkoko_keywords.dylib
-export export LD_LIBRARY_PATH=/usr/local/lib
-```
-
 ### Install php module
 
 Install the module
