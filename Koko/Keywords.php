@@ -10,11 +10,13 @@ final class Keywords {
     function __construct() {
       if (is_null(self::$ffi)) {
         $uname = array_values(explode(' ',php_uname()));
-        if ($uname[0] == 'Darwin')
+        if ($uname[0] == 'Darwin') {
           $lib_suffix = "dylib";
-      } else {
-        $lib_suffix = "so";
+        } else {
+          $lib_suffix = "so";
+        }
       }
+
       self::$ffi = FFI::cdef("
         int c_koko_keywords_match(const char *input, const char *filter);
         const char* c_koko_keywords_error_description(int error);
