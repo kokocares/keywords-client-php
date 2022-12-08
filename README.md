@@ -6,6 +6,13 @@ A php client  for the [Koko Keywords API](https://developers.kokocares.org). The
 
 ## Install
 
+### Ensure that php ffi module is installed
+In php.ini make the extention is enabled:
+
+```
+extension=ffi
+```
+
 ### Install php module
 
 Install the module
@@ -33,6 +40,17 @@ use Koko\Keywords;
 $koko_keywords = new Keywords();
 ```
 
+You may need to set the environment variable in PHP depending on your setup:
+
+```php
+include 'vendor/autoload.php';
+
+putenv("KOKO_KEYWORDS_AUTH=username:password")
+use Koko\Keywords;
+
+$koko_keywords = new Keywords();
+```
+
 It's recommended to instantiate this once to minimize the overhead of loading
 the library.
 
@@ -41,7 +59,7 @@ keyword. The function returns a `bool` indicating whether there was a match or
 not. The function will raise an exception if there is an issue.
 
 ```php
-if ($koko_keywords.match("some value", "") {
+if ($koko_keywords->match("some value", "") {
   // Code if there is a match
 }
 
@@ -54,7 +72,7 @@ string if you are not using it.
 Filter the keyword based on the taxonomy using a colon delimited list of “dimension=value” filters. Omitting a dimension does not filter by that dimension e.g.
 
 ```php
-$koko_keywords.match("sewerslide", "category=eating,parenting:confidence=1,2")
+$koko_keywords->match("sewerslide", "category=eating,parenting:confidence=1,2")
 ```
 
 This matches "sewerslide" against eating eating and parenting, with a confidence of 1 and 2 and any intensity (as intensity was omitted).
